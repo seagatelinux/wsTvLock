@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="overlay_bg">#CC0000</color>
+    <color name="overlay_text">#FFFFFF</color>
+    <color name="overlay_sub_text">#FFCCCC</color>
+    <color name="status_green">#4CAF50</color>
+    <color name="status_red">#F44336</color>
+    <color name="status_yellow">#FF9800</color>
+    <color name="background_dark">#1A1A2E</color>
+    <color name="card_background">#16213E</color>
+    <color name="accent">#0F3460</color>
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#9E9E9E</color>
+    <color name="button_bg">#533483</color>
+    <color name="ic_launcher_background">#1A1A2E</color>
+</resources>

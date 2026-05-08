@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.wsTVLock" parent="@style/Theme.Leanback">
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:colorAccent">@color/button_bg</item>
+    </style>
+
+    <style name="Theme.wsTVLock.Overlay" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/overlay_bg</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowShowWallpaper">false</item>
+    </style>
+</resources>

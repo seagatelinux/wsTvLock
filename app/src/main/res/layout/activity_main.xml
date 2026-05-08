@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <TextView
+                android:id="@+id/settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/settings_title"
+                android:textColor="@color/text_primary"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_server_ip"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/hint_server_ip"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+
+            <EditText
+                android:id="@+id/et_device_id"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/hint_device_id"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/status_indicator"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/status_circle_red" />
+
+                <TextView
+                    android:id="@+id/tv_connection_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status_disconnected"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_save_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/button_bg"
+                    android:text="@string/btn_save_start"
+                    android:textColor="@color/text_primary"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+
+                <Button
+                    android:id="@+id/btn_test_connection"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/btn_test_connection"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/button_outline_white"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+
+                <Button
+                    android:id="@+id/btn_stop_service"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_stop_service"
+                    android:textColor="@color/status_red"
+                    android:background="@drawable/button_outline_red"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Image Picker Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Gambar Kustom"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Welcome Image -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btn_pick_welcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@drawable/edittext_background"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_custom_welcome"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginEnd="12dp"
+                        android:contentDescription="Welcome" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Welcome Image"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_reset_welcome"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:textColor="@color/status_red"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Paused Image -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btn_pick_paused"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@drawable/edittext_background"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_custom_paused"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginEnd="12dp"
+                        android:contentDescription="Paused" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Paused Image"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_reset_paused"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:textColor="@color/status_red"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Pay Now Image -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btn_pick_pay_now"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@drawable/edittext_background"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_custom_pay_now"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginEnd="12dp"
+                        android:contentDescription="Pay Now" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Timeout Image"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_reset_pay_now"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:textColor="@color/status_red"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

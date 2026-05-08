@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AGBill TV Lock</string>
+    <string name="settings_title">Pengaturan AGBill TV</string>
+    <string name="hint_server_ip">IP Server AGBill</string>
+    <string name="hint_device_id">ID Perangkat TV (tvX)</string>
+    <string name="btn_test_connection">Test Koneksi</string>
+    <string name="btn_save_start">Simpan &amp; Mulai</string>
+    <string name="btn_stop_service">Hentikan Layanan</string>
+    <string name="status_connected">Terhubung</string>
+    <string name="status_disconnected">Terputus</string>
+    <string name="status_connecting">Menghubungkan…</string>
+    <string name="msg_save_success">Pengaturan tersimpan</string>
+    <string name="msg_test_success">Koneksi berhasil!</string>
+    <string name="msg_test_fail">Koneksi gagal: %s</string>
+    <string name="overlay_message">WAKTU HABIS</string>
+    <string name="overlay_message_pay_now">SILAKAN BAYAR</string>
+    <string name="overlay_sub">Silakan hubungi resepsionis</string>
+    <string name="notification_channel">AGBill TV Service</string>
+    <string name="notification_connected">AGBill TV Terhubung</string>
+    <string name="notification_disconnected">AGBill TV Terputus</string>
+    <string name="pref_server_ip" translatable="false">server_ip</string>
+    <string name="pref_device_id" translatable="false">device_id</string>
+    <string name="default_server_ip">10.10.10.1</string>
+</resources>

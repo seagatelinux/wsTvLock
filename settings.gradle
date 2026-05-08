@@ -1,0 +1,2 @@
+rootProject.name = "wsTVLock"
+include ':app'
