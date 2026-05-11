@@ -16,6 +16,10 @@ class BootReceiver : BroadcastReceiver() {
 
         if (!SettingsManager.isConfigured(context)) return
 
+        // Directly start the WebSocket service — independent of splash video
+        WebSocketService.start(context)
+        Log.d(TAG, "Service started directly from BootReceiver")
+
         // Launch splash video activity on boot — video plays, then service starts
         val splashIntent = Intent(context, SplashActivity::class.java)
         splashIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

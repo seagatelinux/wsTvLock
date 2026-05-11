@@ -23,6 +23,7 @@ class OverlayActivity : Activity() {
             when (intent.action) {
                 WebSocketService.ACTION_ON -> {
                     Log.d(TAG, "ON received — dismissing overlay")
+                    try { stopLockTask() } catch (_: Exception) {}
                     finish()
                 }
                 WebSocketService.ACTION_BLOCK -> {
@@ -58,10 +59,25 @@ class OverlayActivity : Activity() {
             or android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         )
 
+        // Pin the screen so Home/Back cannot escape the overlay
+        try {
+            startLockTask()
+        } catch (e: Exception) {
+            Log.w(TAG, "startLockTask failed: ${e.message}")
+        }
+
         setContentView(R.layout.activity_overlay)
 
         ivImage = findViewById(R.id.iv_overlay)
         loadOverlayImage(image)
+
+        // Check if timer expired while service was dead — re-lock with pay_now
+        val savedEndTime = SettingsManager.getTimerState(this)
+        if (savedEndTime > 0 && savedEndTime <= System.currentTimeMillis()) {
+            Log.d(TAG, "Timer already expired — showing pay_now.png")
+            SettingsManager.clearTimerState(this)
+            loadOverlayImage("pay_now.png")
+        }
 
         val filter = IntentFilter().apply {
             addAction(WebSocketService.ACTION_ON)
@@ -110,8 +126,9 @@ class OverlayActivity : Activity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
+        try { stopLockTask() } catch (_: Exception) {}
         try { unregisterReceiver(receiver) } catch (_: Exception) {}
+        super.onDestroy()
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean = true

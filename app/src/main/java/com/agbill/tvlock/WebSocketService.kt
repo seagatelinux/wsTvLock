@@ -63,6 +63,18 @@ class WebSocketService : android.app.Service() {
     // Auto-switch timer (pay_now → welcome after 60s)
     private var autoSwitchRunnable: Runnable? = null
 
+    // Internal 30-second keepalive: reconnects if WebSocket drops but service is still alive
+    private val keepaliveHandler = Handler(Looper.getMainLooper())
+    private val keepaliveRunnable = object : Runnable {
+        override fun run() {
+            if (!isConnected && SettingsManager.isConfigured(this@WebSocketService)) {
+                Log.d(TAG, "Keepalive check: disconnected, reconnecting...")
+                connect()
+            }
+            keepaliveHandler.postDelayed(this, 30000)
+        }
+    }
+
     private val reconnectRunnable = Runnable {
         if (!isConnected && SettingsManager.isConfigured(this)) {
             Log.d(TAG, "Reconnecting... (delay=${reconnectDelay}ms)")
@@ -89,6 +101,9 @@ class WebSocketService : android.app.Service() {
         showOverlay("welcome.png")
         restoreTimerIfActive()
 
+        // Start 30-second keepalive loop
+        keepaliveHandler.postDelayed(keepaliveRunnable, 30000)
+
         if (SettingsManager.isConfigured(this)) {
             Log.d(TAG, "Calling connect() from onCreate")
             connect()
@@ -100,6 +115,7 @@ class WebSocketService : android.app.Service() {
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacks(reconnectRunnable)
+        keepaliveHandler.removeCallbacks(keepaliveRunnable)
         cancelTimer()
         autoSwitchRunnable?.let { handler.removeCallbacks(it) }
         webSocket?.close(1000, "Service destroyed")
@@ -113,7 +129,7 @@ class WebSocketService : android.app.Service() {
             Log.d(TAG, "onStartCommand: calling connect()")
             connect()
         }
-        return START_NOT_STICKY
+        return START_STICKY
     }
 
     override fun onBind(intent: Intent?) = null
